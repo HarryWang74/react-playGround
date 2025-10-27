@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Bash(npx nx run:*)",
+      "Bash(npx playwright test:*)",
+      "Bash(npx nx reset:*)",
+      "Bash(sed:*)",
+      "Bash(find:*)",
+      "Bash(npx vitest run:*)",
+      "Bash(timeout 60s npx nx run:*)",
+      "Bash(timeout:*)",
+      "Bash(xargs:*)",
+      "Read(//tmp/**)",
+      "mcp__ide__getDiagnostics"
+    ],
+    "deny": []
+  },
+  "enableAllProjectMcpServers": false
+}
