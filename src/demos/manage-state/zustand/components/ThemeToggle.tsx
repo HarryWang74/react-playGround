@@ -1,23 +1,19 @@
 import { useThemeStore } from '../store/useThemeStore';
 
 /**
- * ThemeToggle component using Zustand best practices.
+ * ThemeToggle component using Zustand with Context-based store.
  *
- * ZUSTAND PATTERN:
- * - Import the store hook directly
- * - Use selectors to pick only the state you need
- * - No Provider needed!
+ * ZUSTAND CONTEXT PATTERN:
+ * - Must be wrapped in ThemeStoreProvider
+ * - Use selector functions to pick specific state
+ * - Each Provider creates an isolated store instance
  *
- * This is the idiomatic way to use Zustand - simple and straightforward.
+ * This pattern is ideal for multiple independent store instances.
  */
 export function ThemeToggle() {
-  // Zustand allows destructuring or separate selectors
-  // Option 1: Destructure (simple, re-renders on any store change)
-  const { theme, toggleTheme } = useThemeStore();
-
-  // Option 2: Separate selectors (optimized, re-renders only when specific values change)
-  // const theme = useThemeStore((state) => state.theme);
-  // const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  // Context-based Zustand requires selector functions
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
   return (
     <button

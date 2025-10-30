@@ -2,8 +2,8 @@ import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Layout } from './Layout';
 import Landing from './pages/Landing';
-import { ContextHooksDemo } from './demos/manage-state/customHook';
-import { ContextHooksReducerDemo } from './demos/manage-state/reducer';
+import ContextHooksDemo from './demos/manage-state/customHook/demo';
+import ContextHooksReducerDemo from './demos/manage-state/reducer/demo';
 import ZustandDemo from './demos/manage-state/zustand/demo';
 
 const router = createBrowserRouter([

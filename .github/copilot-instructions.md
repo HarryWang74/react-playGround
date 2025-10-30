@@ -49,6 +49,20 @@ export function Button({ label, ...props }: ButtonProps) {
 }
 ```
 
+**No index.ts files for re-exports** - import directly from component files:
+
+```tsx
+// ❌ Avoid - don't create index.ts barrel files
+export { Button } from './Button';
+export { Card } from './Card';
+
+// ✅ Correct - import directly from the component file
+import { Button } from '@/library/button/Button';
+import { Card } from '@/library/card/Card';
+```
+
+**Exception**: Only use `index.ts` if absolutely necessary for complex module organization (e.g., state management stores with multiple files).
+
 **Stable references for props passed to children**:
 
 ```tsx

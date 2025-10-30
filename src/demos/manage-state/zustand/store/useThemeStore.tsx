@@ -1,18 +1,31 @@
-﻿import { create } from 'zustand';
+﻿import { useContext } from 'react';
+import { useStore } from 'zustand';
+import { ThemeStoreContext, type ThemeStore } from './ThemeStoreContext';
 
-export type Theme = 'light' | 'dark';
+/**
+ * Hook to access theme store within a ThemeStoreProvider.
+ * Must be used inside a ThemeStoreProvider component.
+ *
+ * @param selector - Function to select specific state from the store
+ * @returns Selected state value
+ * @throws Error if used outside ThemeStoreProvider
+ *
+ * @example
+ * ```tsx
+ * function ThemeToggle() {
+ *   const theme = useThemeStore((state) => state.theme);
+ *   const toggleTheme = useThemeStore((state) => state.toggleTheme);
+ *
+ *   return <button onClick={toggleTheme}>{theme}</button>;
+ * }
+ * ```
+ */
+export function useThemeStore<T>(selector: (state: ThemeStore) => T): T {
+  const store = useContext(ThemeStoreContext);
 
-interface ThemeStore {
-  theme: Theme;
-  toggleTheme: () => void;
-  setTheme: (theme: Theme) => void;
+  if (!store) {
+    throw new Error('useThemeStore must be used within ThemeStoreProvider');
+  }
+
+  return useStore(store, selector);
 }
-
-export const useThemeStore = create<ThemeStore>((set) => ({
-  theme: 'light',
-  toggleTheme: () =>
-    set((state) => ({
-      theme: state.theme === 'light' ? 'dark' : 'light',
-    })),
-  setTheme: (theme: Theme) => set({ theme }),
-}));
