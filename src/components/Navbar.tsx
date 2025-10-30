@@ -14,15 +14,16 @@ export function Navbar() {
         </h1>
       </NavLink>
 
-      <NavSection
-        title="Context + Provider + Custom Hooks"
-        link="/context-hooks"
-      />
-
-      <NavSection
-        title="Context + Provider + Custom Hook + Reducer"
-        link="/context-hooks-reducer"
-      />
+      <div className="p-4">
+        <h2 className="text-sm font-semibold text-gray-500 uppercase mb-2">
+          State Management
+        </h2>
+        <div className="space-y-1">
+          <NavSection title="Custom Hook" link="/context-hooks" />
+          <NavSection title="Reducer" link="/context-hooks-reducer" />
+          <NavSection title="Zustand" link="/zustand" />
+        </div>
+      </div>
     </div>
   );
 }
