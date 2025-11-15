@@ -89,6 +89,67 @@ export function Dropdown() {
 
 **Keep JSX shallow** - break into subcomponents rather than deeply nested JSX.
 
+## TypeScript Best Practices
+
+**Type everything explicitly** - avoid implicit `any`:
+
+```tsx
+// ✅ Every component's props
+interface UserCardProps {
+  user: User;
+  onEdit: (user: User) => void;
+}
+
+// ✅ Every state variable
+const [count, setCount] = useState<number>(0);
+const [user, setUser] = useState<User | null>(null);
+
+// ✅ Every event handler
+const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {};
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
+
+// ✅ Every API response
+interface ApiResponse {
+  data: User[];
+  status: number;
+}
+
+// ✅ Every custom hook - input params and return types
+function useUserCrud(): {
+  users: User[];
+  isProcessing: boolean;
+  createUser: (data: CreateUserDto) => Promise<void>;
+} {
+  // ...
+}
+
+// ✅ Every context value
+interface ThemeContextValue {
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+}
+
+// ✅ Every ref
+const inputRef = useRef<HTMLInputElement>(null);
+const divRef = useRef<HTMLDivElement>(null);
+
+// ✅ Every function parameter
+function formatUser(user: User): string {
+  return `${user.name} (${user.email})`;
+}
+
+// ✅ Every callback prop
+interface FormProps {
+  onChange: (value: string) => void;
+  onSubmit: (data: FormData) => Promise<void>;
+}
+
+// ✅ Children when needed
+interface LayoutProps {
+  children: React.ReactNode;
+}
+```
+
 ## Testing Patterns (Vitest + RTL)
 
 **Focus on user behavior**, not implementation. Always use `toBeVisible()` instead of `toBeInTheDocument()`:

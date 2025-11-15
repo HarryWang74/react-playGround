@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import ContextHooksDemo from './demos/manage-state/customHook/demo';
 import ContextHooksReducerDemo from './demos/manage-state/reducer/demo';
 import ZustandDemo from './demos/manage-state/zustand/demo';
+import AxiosCrudDemo from './demos/api intergation/axio/demo';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'zustand',
         element: <ZustandDemo />,
+      },
+      {
+        path: 'axios-crud',
+        element: <AxiosCrudDemo />,
       },
     ],
   },

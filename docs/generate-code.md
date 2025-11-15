@@ -21,3 +21,16 @@ applyTo: '**/*.ts,**/*.tsx'
 # JSDoc Requirements
 
 - Document all components and interfaces
+
+# When writing React with TypeScript, type:
+
+✅ Every component's props - interface Props { ... }
+✅ Every state variable - useState<Type>()
+✅ Every event handler - (e: React.MouseEvent) => {}
+✅ Every API response - interface ApiResponse { ... }
+✅ Every custom hook - Input params and return types
+✅ Every context value - interface ContextValue { ... }
+✅ Every ref - useRef<HTMLDivElement>(null)
+✅ Every function parameter - (user: User) => {}
+✅ Every callback prop - onChange: (value: string) => void
+✅ Children when needed - children: React.ReactNode

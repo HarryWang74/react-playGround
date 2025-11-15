@@ -24,6 +24,15 @@ export function Navbar() {
           <NavSection title="Zustand" link="/zustand" />
         </div>
       </div>
+
+      <div className="p-4">
+        <h2 className="text-sm font-semibold text-gray-500 uppercase mb-2">
+          API Integration
+        </h2>
+        <div className="space-y-1">
+          <NavSection title="Axios CRUD" link="/axios-crud" />
+        </div>
+      </div>
     </div>
   );
 }
