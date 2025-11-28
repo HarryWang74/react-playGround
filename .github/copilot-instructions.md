@@ -150,6 +150,21 @@ interface LayoutProps {
 }
 ```
 
+**Comparison operators** - always use strict equality:
+
+```tsx
+// ✅ Use strict equality
+if (value === null) { /* ... */ }
+if (status !== 'active') { /* ... */ }
+
+// ❌ Avoid loose equality (causes unexpected type coercion)
+if (value == null) { /* ... */ }
+if (status != 'active') { /* ... */ }
+
+// Exception: == null checks both null and undefined
+// but === null || === undefined is preferred for clarity
+```
+
 ## Testing Patterns (Vitest + RTL)
 
 **Focus on user behavior**, not implementation. Always use `toBeVisible()` instead of `toBeInTheDocument()`:

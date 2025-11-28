@@ -34,3 +34,9 @@ applyTo: '**/*.ts,**/*.tsx'
 ✅ Every function parameter - (user: User) => {}
 ✅ Every callback prop - onChange: (value: string) => void
 ✅ Children when needed - children: React.ReactNode
+
+# When writing JavaScript or TypeScript code:
+
+- Use === and !== for all comparisons (strict equality)
+- Avoid == and != (loose equality) as they perform unexpected type coercion
+- Exception: You may use == null to check for both null and undefined, but === null || === undefined is preferred for clarity
